@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Noto Serif TC", "Noto Serif SC", "Songti TC", serif;
+  --font-body: "Noto Serif TC", "Noto Serif SC", "Songti TC", serif;
+  --font-sans: "Noto Sans TC", "Noto Sans SC", "PingFang TC", sans-serif;
+  --font-kai: "LXGW WenKai TC", "Kaiti TC", serif;
+
+  --color-bg: #f3ece0;
+  --color-surface: #faf6ee;
+  --color-raised: #fffdf8;
+  --color-fg: #2c261e;
+  --color-muted: #6d6458;
+  --color-faint: #94897a;
+  --color-border: #e2d6c3;
+  --color-accent: #6b3a32;
+  --color-accent-fg: #faf6ee;
+  --color-seal: #6b3a32;
+  --color-verse: #3f3428;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+
+  --shadow-soft: 0 1px 0 rgba(44, 38, 30, 0.04), 0 10px 28px -18px rgba(44, 38, 30, 0.28);
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  html[data-theme="ink"] {
+    --color-bg: #161310;
+    --color-surface: #1e1a16;
+    --color-raised: #26211c;
+    --color-fg: #ece4d6;
+    --color-muted: #b4a894;
+    --color-faint: #8a7e6e;
+    --color-border: #3a332b;
+    --color-accent: #c4a48a;
+    --color-accent-fg: #161310;
+    --color-seal: #d4b49c;
+    --color-verse: #f0e6d4;
+  }
+
+  html[data-theme="dusk"] {
+    --color-bg: #1c2422;
+    --color-surface: #232c2a;
+    --color-raised: #2c3734;
+    --color-fg: #e6ebe6;
+    --color-muted: #a8b4ae;
+    --color-faint: #7f8c86;
+    --color-border: #35413d;
+    --color-accent: #9bb5a8;
+    --color-accent-fg: #15201c;
+    --color-seal: #b7cfc3;
+    --color-verse: #e8f0ea;
+  }
+
+  body {
+    min-height: 100dvh;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--reader-font, var(--font-body));
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+}
+
+.reader-prose p {
+  text-wrap: pretty;
+}
+
+.reader-prose .verse-ref {
+  font-weight: 650;
+  color: var(--color-seal);
+  letter-spacing: 0.04em;
+}
+
+.reader-prose .verse-quote {
+  display: block;
+  margin-top: 0.35em;
+  padding: 0.7em 0.9em;
+  background: var(--color-raised);
+  border-left: 3px solid var(--color-seal);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  color: var(--color-verse);
+  font-weight: 500;
+}
+
+.reader-prose .note-chip {
+  display: inline-block;
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-accent-fg);
+  background: var(--color-accent);
+  border-radius: 999px;
+  padding: 0.12em 0.6em;
+  margin-right: 0.5em;
+  vertical-align: 0.08em;
+  font-family: var(--font-sans);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
