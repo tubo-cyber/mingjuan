@@ -1,14 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
-import { ChevronLeft, ChevronRight, Palette, Star } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
-import { AskDrawer } from "@/components/ask-drawer";
 import { ReaderView } from "@/components/reader-view";
-import { SceneStrip } from "@/components/scene-strip";
 import { BOOK_BY_ID, KINDS, articlePath, type KindCode } from "@/lib/catalog";
 import { getArticleFn } from "@/lib/server-fns";
-import { blocksToText } from "@/lib/article-text";
-import { useCast } from "@/lib/cast-store";
 import { useLibrary, usePrefs } from "@/lib/prefs";
 import { cn } from "@/lib/utils";
 
@@ -48,8 +44,6 @@ function ReadPage() {
   const toggleStar = useLibrary((s) => s.toggleStar);
   const starred = useLibrary((s) => s.stars.some((x) => x.href === href));
   const [live, setLive] = useState(article);
-  const peopleAll = useCast((s) => s.people);
-  const people = peopleAll.filter((p) => p.bookId === bookId && p.confirmed);
 
   useEffect(() => {
     setLive(article);
@@ -72,8 +66,6 @@ function ReadPage() {
   }, [href, live.title, pushHistory]);
 
   const name = script === "S" ? book.nameS : book.name;
-  const source = useMemo(() => blocksToText(live.blocks), [live.blocks]);
-  const marks = people.map((p) => ({ id: p.id, name: p.name, aliases: p.aliases }));
 
   if (live.isPdf) {
     return (
@@ -108,32 +100,18 @@ function ReadPage() {
         </Link>
       }
       action={
-        <div className="flex items-center">
-          <AskDrawer title={live.title} source={source} />
-          <Link
-            to="/studio/$bookId"
-            params={{ bookId }}
-            className="grid size-11 place-items-center text-muted"
-            aria-label="绘像"
-          >
-            <Palette className="size-5" />
-          </Link>
-          <button
-            type="button"
-            className="grid size-11 place-items-center"
-            onClick={() => toggleStar({ href, title: live.title })}
-            aria-label="收藏"
-          >
-            <Star className={cn("size-5", starred ? "fill-accent text-accent" : "text-muted")} />
-          </button>
-        </div>
+        <button
+          type="button"
+          className="grid size-11 place-items-center"
+          onClick={() => toggleStar({ href, title: live.title })}
+          aria-label="收藏"
+        >
+          <Star className={cn("size-5", starred ? "fill-accent text-accent" : "text-muted")} />
+        </button>
       }
     >
       <KindBar bookId={bookId} chap={chap} current={k} />
-      {n >= 1 && n <= book.chapters ? (
-        <SceneStrip bookId={bookId} bookName={name} chapter={n} passage={source} />
-      ) : null}
-      <ReaderView title={live.title} blocks={live.blocks} marks={marks} />
+      <ReaderView title={live.title} blocks={live.blocks} />
       <div className="mt-10 flex items-center justify-between gap-3">
         {prev !== null ? (
           <Link

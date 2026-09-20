@@ -12,13 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ColumnsRouteImport } from './routes/columns'
 import { Route as IntroRouteImport } from './routes/intro'
-import { Route as StudioRouteImport } from './routes/studio'
 import { Route as TopicsRouteImport } from './routes/topics'
 import { Route as ViewRouteImport } from './routes/view'
 import { Route as BookBookIdRouteImport } from './routes/book.$bookId'
 import { Route as ColumnSlugRouteImport } from './routes/column.$slug'
-import { Route as StudioIndexRouteImport } from './routes/studio.index'
-import { Route as StudioBookIdRouteImport } from './routes/studio.$bookId'
 import { Route as TopicTopicIdRouteImport } from './routes/topic.$topicId'
 import { Route as ReadBookIdKindChapRouteImport } from './routes/read.$bookId.$kind.$chap'
 
@@ -35,11 +32,6 @@ const ColumnsRoute = ColumnsRouteImport.update({
 const IntroRoute = IntroRouteImport.update({
   id: '/intro',
   path: '/intro',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StudioRoute = StudioRouteImport.update({
-  id: '/studio',
-  path: '/studio',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TopicsRoute = TopicsRouteImport.update({
@@ -62,16 +54,6 @@ const ColumnSlugRoute = ColumnSlugRouteImport.update({
   path: '/column/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const StudioIndexRoute = StudioIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => StudioRoute,
-} as any)
-const StudioBookIdRoute = StudioBookIdRouteImport.update({
-  id: '/$bookId',
-  path: '/$bookId',
-  getParentRoute: () => StudioRoute,
-} as any)
 const TopicTopicIdRoute = TopicTopicIdRouteImport.update({
   id: '/topic/$topicId',
   path: '/topic/$topicId',
@@ -87,14 +69,11 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/columns': typeof ColumnsRoute
   '/intro': typeof IntroRoute
-  '/studio': typeof StudioRouteWithChildren
   '/topics': typeof TopicsRoute
   '/view': typeof ViewRoute
   '/book/$bookId': typeof BookBookIdRoute
   '/column/$slug': typeof ColumnSlugRoute
-  '/studio/$bookId': typeof StudioBookIdRoute
   '/topic/$topicId': typeof TopicTopicIdRoute
-  '/studio/': typeof StudioIndexRoute
   '/read/$bookId/$kind/$chap': typeof ReadBookIdKindChapRoute
 }
 export interface FileRoutesByTo {
@@ -105,9 +84,7 @@ export interface FileRoutesByTo {
   '/view': typeof ViewRoute
   '/book/$bookId': typeof BookBookIdRoute
   '/column/$slug': typeof ColumnSlugRoute
-  '/studio/$bookId': typeof StudioBookIdRoute
   '/topic/$topicId': typeof TopicTopicIdRoute
-  '/studio': typeof StudioIndexRoute
   '/read/$bookId/$kind/$chap': typeof ReadBookIdKindChapRoute
 }
 export interface FileRoutesById {
@@ -115,14 +92,11 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/columns': typeof ColumnsRoute
   '/intro': typeof IntroRoute
-  '/studio': typeof StudioRouteWithChildren
   '/topics': typeof TopicsRoute
   '/view': typeof ViewRoute
   '/book/$bookId': typeof BookBookIdRoute
   '/column/$slug': typeof ColumnSlugRoute
-  '/studio/$bookId': typeof StudioBookIdRoute
   '/topic/$topicId': typeof TopicTopicIdRoute
-  '/studio/': typeof StudioIndexRoute
   '/read/$bookId/$kind/$chap': typeof ReadBookIdKindChapRoute
 }
 export interface FileRouteTypes {
@@ -131,14 +105,11 @@ export interface FileRouteTypes {
     | '/'
     | '/columns'
     | '/intro'
-    | '/studio'
     | '/topics'
     | '/view'
     | '/book/$bookId'
     | '/column/$slug'
-    | '/studio/$bookId'
     | '/topic/$topicId'
-    | '/studio/'
     | '/read/$bookId/$kind/$chap'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -149,23 +120,18 @@ export interface FileRouteTypes {
     | '/view'
     | '/book/$bookId'
     | '/column/$slug'
-    | '/studio/$bookId'
     | '/topic/$topicId'
-    | '/studio'
     | '/read/$bookId/$kind/$chap'
   id:
     | '__root__'
     | '/'
     | '/columns'
     | '/intro'
-    | '/studio'
     | '/topics'
     | '/view'
     | '/book/$bookId'
     | '/column/$slug'
-    | '/studio/$bookId'
     | '/topic/$topicId'
-    | '/studio/'
     | '/read/$bookId/$kind/$chap'
   fileRoutesById: FileRoutesById
 }
@@ -173,7 +139,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ColumnsRoute: typeof ColumnsRoute
   IntroRoute: typeof IntroRoute
-  StudioRoute: typeof StudioRouteWithChildren
   TopicsRoute: typeof TopicsRoute
   ViewRoute: typeof ViewRoute
   BookBookIdRoute: typeof BookBookIdRoute
@@ -205,13 +170,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IntroRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/studio': {
-      id: '/studio'
-      path: '/studio'
-      fullPath: '/studio'
-      preLoaderRoute: typeof StudioRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/topics': {
       id: '/topics'
       path: '/topics'
@@ -240,20 +198,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ColumnSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/studio/': {
-      id: '/studio/'
-      path: '/'
-      fullPath: '/studio/'
-      preLoaderRoute: typeof StudioIndexRouteImport
-      parentRoute: typeof StudioRoute
-    }
-    '/studio/$bookId': {
-      id: '/studio/$bookId'
-      path: '/$bookId'
-      fullPath: '/studio/$bookId'
-      preLoaderRoute: typeof StudioBookIdRouteImport
-      parentRoute: typeof StudioRoute
-    }
     '/topic/$topicId': {
       id: '/topic/$topicId'
       path: '/topic/$topicId'
@@ -271,24 +215,10 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface StudioRouteChildren {
-  StudioBookIdRoute: typeof StudioBookIdRoute
-  StudioIndexRoute: typeof StudioIndexRoute
-}
-
-const StudioRouteChildren: StudioRouteChildren = {
-  StudioBookIdRoute: StudioBookIdRoute,
-  StudioIndexRoute: StudioIndexRoute,
-}
-
-const StudioRouteWithChildren =
-  StudioRoute._addFileChildren(StudioRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ColumnsRoute: ColumnsRoute,
   IntroRoute: IntroRoute,
-  StudioRoute: StudioRouteWithChildren,
   TopicsRoute: TopicsRoute,
   ViewRoute: ViewRoute,
   BookBookIdRoute: BookBookIdRoute,

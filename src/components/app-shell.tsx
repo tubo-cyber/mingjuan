@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { BookOpen, Layers, UserRound, Info, Settings2, Palette } from "lucide-react";
+import { BookOpen, Layers, UserRound, Info, Settings2 } from "lucide-react";
 import type { ReactNode } from "react";
 import { SettingsSheet } from "./settings-sheet";
 
@@ -43,12 +43,11 @@ export function AppShell({
           </SettingsSheet>
         </div>
       </header>
-      <main className="mx-auto w-full max-w-3xl px-4 pb-28 pt-4">{children}</main>
+      <main className="mx-auto w-full max-w-3xl px-4 pb-24 pt-4">{children}</main>
       <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-bg/95 backdrop-blur-md pb-[env(safe-area-inset-bottom)]">
-        <div className="mx-auto grid max-w-3xl grid-cols-5">
+        <div className="mx-auto grid max-w-3xl grid-cols-4">
           <Tab to="/" icon={<BookOpen className="size-5" />} label="經卷" />
           <Tab to="/topics" icon={<Layers className="size-5" />} label="主題" />
-          <Tab to="/studio" icon={<Palette className="size-5" />} label="繪像" />
           <Tab to="/columns" icon={<UserRound className="size-5" />} label="專欄" />
           <Tab to="/intro" icon={<Info className="size-5" />} label="關於" />
         </div>

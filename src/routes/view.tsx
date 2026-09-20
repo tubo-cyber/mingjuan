@@ -1,12 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import { ChevronLeft, Star } from "lucide-react";
 import { z } from "zod";
 import { AppShell } from "@/components/app-shell";
-import { AskDrawer } from "@/components/ask-drawer";
 import { ReaderView } from "@/components/reader-view";
 import { getArticleFn } from "@/lib/server-fns";
-import { blocksToText } from "@/lib/article-text";
 import { useLibrary } from "@/lib/prefs";
 import { cn } from "@/lib/utils";
 
@@ -30,7 +28,6 @@ function ViewPage() {
   const pushHistory = useLibrary((s) => s.pushHistory);
   const toggleStar = useLibrary((s) => s.toggleStar);
   const starred = useLibrary((s) => s.stars.some((x) => x.href === href));
-  const source = useMemo(() => blocksToText(article.blocks), [article.blocks]);
 
   useEffect(() => {
     pushHistory({ href, title: article.title });
@@ -45,12 +42,9 @@ function ViewPage() {
         </Link>
       }
       action={
-        <div className="flex">
-          <AskDrawer title={article.title} source={source} />
-          <button type="button" className="grid size-11 place-items-center" onClick={() => toggleStar({ href, title: article.title })}>
-            <Star className={cn("size-5", starred ? "fill-accent text-accent" : "text-muted")} />
-          </button>
-        </div>
+        <button type="button" className="grid size-11 place-items-center" onClick={() => toggleStar({ href, title: article.title })}>
+          <Star className={cn("size-5", starred ? "fill-accent text-accent" : "text-muted")} />
+        </button>
       }
     >
       {article.isPdf ? (

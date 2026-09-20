@@ -39,14 +39,6 @@ function BookPage() {
       <p className="mb-4 text-sm text-muted">
         共 {book.chapters} 章 · 點章節即讀註解，也可改選其他資料類型
       </p>
-      <Link
-        to="/studio/$bookId"
-        params={{ bookId: book.id }}
-        className="mb-4 flex min-h-12 items-center justify-between rounded-[length:var(--radius-lg)] border border-border bg-surface px-4 text-sm"
-      >
-        <span>整理本卷人物並繪像</span>
-        <span className="text-muted">開</span>
-      </Link>
       <div className="mb-4 flex flex-wrap gap-2">
         {KINDS.map((k) => (
           <Link
