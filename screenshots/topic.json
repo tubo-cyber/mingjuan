@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/view?path=Topics/67God/100.htm",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "明卷查經",
+      "hasCanvas": false,
+      "bodyTextLen": 6035,
+      "bodyTextHash": "db2f99b7efef9d7b50fab9eb273bfbfd760dfabb3693b99fe1a2d02a3c84e761",
+      "bodyTextPrefix": "查經資料 查經資料 認識神綜合 【認識神】 “認識你，這就是永生”（約十七 3 ）。 在屬靈的生命裏，認識神是絕對需要的。這就是",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/topic.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "明卷查經",
+      "hasCanvas": false,
+      "bodyTextLen": 6035,
+      "bodyTextHash": "db2f99b7efef9d7b50fab9eb273bfbfd760dfabb3693b99fe1a2d02a3c84e761",
+      "bodyTextPrefix": "查經資料 查經資料 認識神綜合 【認識神】 “認識你，這就是永生”（約十七 3 ）。 在屬靈的生命裏，認識神是絕對需要的。這就是",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/topic-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/topic.json"
+}

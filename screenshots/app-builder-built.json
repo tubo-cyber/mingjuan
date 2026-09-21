@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "明卷查經",
+      "hasCanvas": false,
+      "bodyTextLen": 514,
+      "bodyTextHash": "e5dc01a0151f6e96ac39e9080b16ae597e40038ea0273fdd63d8d5fb8bad5987",
+      "bodyTextPrefix": "明卷 明卷查經 原站資料重排 · 手機也能順讀 舊約 創 創世記 出 出埃及記 利 利未記 民 民數記 申 申命記 書 約書亞記",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "明卷查經",
+      "hasCanvas": false,
+      "bodyTextLen": 514,
+      "bodyTextHash": "e5dc01a0151f6e96ac39e9080b16ae597e40038ea0273fdd63d8d5fb8bad5987",
+      "bodyTextPrefix": "明卷 明卷查經 原站資料重排 · 手機也能順讀 舊約 創 創世記 出 出埃及記 利 利未記 民 民數記 申 申命記 書 約書亞記",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}

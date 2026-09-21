@@ -29,39 +29,76 @@ function decodeEntities(s: string): string {
     .replace(/&([a-zA-Z]+);/g, (_, n) => ENTITIES[n] ?? `&${n};`);
 }
 
+function scoreDecoded(s: string): number {
+  const fffd = (s.match(/\uFFFD/g) ?? []).length;
+  const cjk = (s.match(/[\u4e00-\u9fff]/g) ?? []).length;
+  return cjk * 4 - fffd * 12;
+}
+
 export function decodePage(buf: ArrayBuffer): string {
   const bytes = new Uint8Array(buf);
-  const sniff = new TextDecoder("utf-8", { fatal: false }).decode(bytes.slice(0, 2500));
+  const sniff = new TextDecoder("utf-8", { fatal: false }).decode(bytes.slice(0, 2800));
   const charset = /charset\s*=\s*["']?([\w-]+)/i.exec(sniff)?.[1]?.toLowerCase() ?? "";
-  const utf8 = new TextDecoder("utf-8", { fatal: false }).decode(bytes);
-  const replacements = (utf8.match(/\uFFFD/g) ?? []).length;
-  const wantBig5 = charset.includes("big5") || replacements > 12;
-  const wantGbk =
-    charset.includes("gb2312") || charset.includes("gbk") || charset.includes("gb18030");
-  if (wantBig5) {
+
+  const tryDec = (label: string) => {
     try {
-      return new TextDecoder("big5").decode(bytes);
+      return new TextDecoder(label, { fatal: false }).decode(bytes);
     } catch {
-      /* fall through */
+      return "";
+    }
+  };
+
+  const utf8 = tryDec("utf-8");
+  const candidates: { label: string; text: string }[] = [{ label: "utf-8", text: utf8 }];
+  if (charset.includes("big5") || charset.includes("gb") || scoreDecoded(utf8) < 40) {
+    candidates.push({ label: "big5", text: tryDec("big5") });
+    candidates.push({ label: "gbk", text: tryDec("gbk") });
+  } else {
+    candidates.push({ label: "big5", text: tryDec("big5") });
+  }
+
+  let best = utf8;
+  let bestScore = scoreDecoded(utf8);
+  for (const c of candidates) {
+    if (!c.text) continue;
+    const sc = scoreDecoded(c.text);
+    if (sc > bestScore) {
+      best = c.text;
+      bestScore = sc;
     }
   }
-  if (wantGbk) {
-    try {
-      return new TextDecoder("gbk").decode(bytes);
-    } catch {
-      /* fall through */
-    }
-  }
-  return utf8;
+  return best;
+}
+
+/** Word 匯出隱藏欄位，剝標籤後會蓋在正文上。 */
+const FIELD_CODE =
+  /\{\s*\\?\*?\\?\s*(?:Section|TOC|HYPERLINK|INCLUDETEXT|INCLUDEPICTURE|PAGEREF|REF|SEQ|XE|TC|RD)[^}]*\}/gi;
+
+function stripFieldCodes(s: string): string {
+  return s
+    .replace(FIELD_CODE, "")
+    .replace(/\{\\Section:[^}]*\}/gi, "")
+    .replace(/\{\\?Section:TopicID=\d+\}/gi, "")
+    .replace(/Section:TopicID=\d+/gi, "");
 }
 
 function stripJunk(html: string): string {
-  return html
+  let out = html
     .replace(/<!--[\s\S]*?-->/g, "")
     .replace(/<script[\s\S]*?<\/script>/gi, "")
     .replace(/<style[\s\S]*?<\/style>/gi, "")
     .replace(/<xml[\s\S]*?<\/xml>/gi, "")
     .replace(/<\/?(?:o|v|w|m|st1):[^>]*>/gi, "");
+
+  for (let i = 0; i < 8; i++) {
+    const next = out.replace(
+      /<span[^>]*(?:mso-hide\s*:\s*all|display\s*:\s*none)[^>]*>[\s\S]*?<\/span>/gi,
+      "",
+    );
+    if (next === out) break;
+    out = next;
+  }
+  return stripFieldCodes(out);
 }
 
 export type IndexLink = { href: string; text: string; pdf: boolean };
@@ -113,6 +150,12 @@ const SKIP_LINE =
 const LABELS =
   "呂振中譯|吕振中译|原文直譯|原文直译|原文字義|原文字义|背景註解|背景注解|文意註解|文意注解|靈意註解|灵意注解|問題改正|问题改正|話中之光|话中之光|串珠";
 
+function tidyLine(line: string): string {
+  return stripFieldCodes(line)
+    .replace(/[ \t\u00a0]+/g, " ")
+    .trim();
+}
+
 export function parseArticle(html: string, fallbackTitle: string): { title: string; blocks: Block[] } {
   const raw = stripJunk(html);
   const body = raw.match(/<body[^>]*>([\s\S]*)<\/body>/i)?.[1] ?? raw;
@@ -126,8 +169,15 @@ export function parseArticle(html: string, fallbackTitle: string): { title: stri
   const text = decodeEntities(withBreaks.replace(/<[^>]+>/g, " "));
   const lines = text
     .split(/\n+/)
-    .map((l) => l.replace(/[ \t\u00a0]+/g, " ").trim())
-    .filter((l) => l.length > 0 && !SKIP_LINE.test(l) && !/^[|〔〕﹝﹞\s]+$/.test(l));
+    .map(tidyLine)
+    .filter(
+      (l) =>
+        l.length > 0 &&
+        !SKIP_LINE.test(l) &&
+        !/^[|〔〕﹝﹞\s]+$/.test(l) &&
+        !/TopicID\s*=/i.test(l) &&
+        !/^\{/.test(l),
+    );
 
   const blocks: Block[] = [];
   let title = fallbackTitle;

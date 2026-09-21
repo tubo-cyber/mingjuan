@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/read/23/C/1",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "明卷查經",
+      "hasCanvas": false,
+      "bodyTextLen": 15258,
+      "bodyTextHash": "c4ca9625bf75d003220decd874fe219bce3985ee02614f4ba5f10b585c610203",
+      "bodyTextPrefix": "以賽亞書 1 註解 拾穗 例證 信息 綱目 譯文 以賽亞書第一章註解 壹、內容綱要 【神的斥責、申訴、與應許】 一、 卷首題詞，",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/isaiah.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "明卷查經",
+      "hasCanvas": false,
+      "bodyTextLen": 15258,
+      "bodyTextHash": "c4ca9625bf75d003220decd874fe219bce3985ee02614f4ba5f10b585c610203",
+      "bodyTextPrefix": "以賽亞書 1 註解 拾穗 例證 信息 綱目 譯文 以賽亞書第一章註解 壹、內容綱要 【神的斥責、申訴、與應許】 一、 卷首題詞，",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/isaiah-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/isaiah.json"
+}

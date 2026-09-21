@@ -169,9 +169,23 @@ export const COLUMNS = [
 
 export const ORIGIN = "https://www.ccbiblestudy.org";
 
+/** 原站對以賽亞、耶利米、以西結的「註解」章節檔用 A，提要用 C。 */
+const COMMENTARY_CHAPTER_LETTER: Record<string, string> = {
+  "23": "A",
+  "24": "A",
+  "26": "A",
+};
+
 export function bookDir(book: Book): string {
   const root = book.testament === "ot" ? "Old Testament" : "New Testament";
   return `${root}/${book.folder}`;
+}
+
+export function kindLetter(book: Book, kind: KindCode, chap: number): string {
+  if (kind === "C" && chap !== 0 && COMMENTARY_CHAPTER_LETTER[book.id]) {
+    return COMMENTARY_CHAPTER_LETTER[book.id];
+  }
+  return kind;
 }
 
 export function articleFile(
@@ -182,7 +196,8 @@ export function articleFile(
 ): string {
   const pad = padChapLocal(book.id, chap);
   const ext = kind === "V" ? "pdf" : "htm";
-  return `${book.id}${kind}${script}${pad}.${ext}`;
+  const letter = kindLetter(book, kind, chap);
+  return `${book.id}${letter}${script}${pad}.${ext}`;
 }
 
 function padChapLocal(bookId: string, chap: number): string {
@@ -197,6 +212,20 @@ export function articlePath(
   script: "T" | "S" | "E" = "T",
 ): string {
   return `${bookDir(book)}/${articleFile(book, kind, chap, script)}`;
+}
+
+/** Alternate filename if the primary 404s (C ↔ A for commentary). */
+export function articlePathFallback(
+  book: Book,
+  kind: KindCode,
+  chap: number,
+  script: "T" | "S" | "E" = "T",
+): string | null {
+  if (kind !== "C" || chap === 0) return null;
+  const primary = kindLetter(book, kind, chap);
+  const other = primary === "A" ? "C" : "A";
+  const pad = padChapLocal(book.id, chap);
+  return `${bookDir(book)}/${book.id}${other}${script}${pad}.htm`;
 }
 
 export function indexPath(book: Book, script: "T" | "S" | "E" = "T"): string {

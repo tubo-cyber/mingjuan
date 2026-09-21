@@ -7,8 +7,8 @@
       "status": 200,
       "title": "明卷查經",
       "hasCanvas": false,
-      "bodyTextLen": 511,
-      "bodyTextHash": "97ba3a43b867da5f8ede76881436ffadc5188bf08c9472835ca7b7bef1b6b389",
+      "bodyTextLen": 514,
+      "bodyTextHash": "e5dc01a0151f6e96ac39e9080b16ae597e40038ea0273fdd63d8d5fb8bad5987",
       "bodyTextPrefix": "明卷 明卷查經 原站資料重排 · 手機也能順讀 舊約 創 創世記 出 出埃及記 利 利未記 民 民數記 申 申命記 書 約書亞記",
       "horizontalOverflow": false,
       "consoleErrors": [],
@@ -21,11 +21,13 @@
       "status": 200,
       "title": "明卷查經",
       "hasCanvas": false,
-      "bodyTextLen": 511,
-      "bodyTextHash": "97ba3a43b867da5f8ede76881436ffadc5188bf08c9472835ca7b7bef1b6b389",
+      "bodyTextLen": 514,
+      "bodyTextHash": "e5dc01a0151f6e96ac39e9080b16ae597e40038ea0273fdd63d8d5fb8bad5987",
       "bodyTextPrefix": "明卷 明卷查經 原站資料重排 · 手機也能順讀 舊約 創 創世記 出 出埃及記 利 利未記 民 民數記 申 申命記 書 約書亞記",
       "horizontalOverflow": false,
-      "consoleErrors": [],
+      "consoleErrors": [
+        "A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:\n\n- A server/client branch `if (typeof window !== 'undefined')`.\n- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.\n- Date formatting in a user's locale which doesn't match the server.\n- External changing data without sending a snapshot of it along with the HTML.\n- Invalid HTML tag nesting.\n\nIt can also happen if the client has a browser extension installed which messes with the HTML before React loaded.\n\n%s%s https://react.dev/link/hydration-mismatch \n\n  ...\n    <MatchImpl routeId=\"/\">\n      <MatchView router={{...}} match={{id:\"//\",ssr:true, ...}}>\n        <SafeFragment>\n          <SafeFragment fallback={null}>\n            <CatchBoundary getResetKey={function getResetKey} errorComponent={function AppErrorComponent} ...>\n              <SafeFragment fallback={function fallback}>\n                <MatchInnerImpl match={{id:\"//\",ssr:true, ...}}>\n                  <Lazy>\n                    <Home>\n                      <AppShell>\n                        <div className=\"min-h-dvh ...\">\n                          <header>\n                          <main className=\"mx-auto w-...\">\n                            <section>\n                            <label className=\"mb-6 flex ...\">\n                              <Search>\n                              <input\n                                value=\"\"\n                                onChange={function onChange}\n                                placeholder=\"搜尋書卷，如 創世記、羅馬書\"\n                                className=\"h-12 w-full bg-transparent text-base outline-none placeholder:text-faint\"\n-                               style={{caret-color:\"transparent\"}}\n                              >\n                            ...\n                          ...\n"
+      ],
       "pageErrors": [],
       "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
     }

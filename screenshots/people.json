@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/people",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "明卷查經",
+      "hasCanvas": false,
+      "bodyTextLen": 484,
+      "bodyTextHash": "039750f2a40cd3edd5c1a92f94096ce3155b4b0cb4d77ed49e457bf7bb10cf70",
+      "bodyTextPrefix": "明卷 人物 人物畫像 選書卷與章節，列出重要人物，再選畫風生成。每次只繪一張，以免拖慢閱讀。 書卷 創世記 出埃及記 利未記 民",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/people.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "明卷查經",
+      "hasCanvas": false,
+      "bodyTextLen": 484,
+      "bodyTextHash": "039750f2a40cd3edd5c1a92f94096ce3155b4b0cb4d77ed49e457bf7bb10cf70",
+      "bodyTextPrefix": "明卷 人物 人物畫像 選書卷與章節，列出重要人物，再選畫風生成。每次只繪一張，以免拖慢閱讀。 書卷 創世記 出埃及記 利未記 民",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/people-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/people.json"
+}
