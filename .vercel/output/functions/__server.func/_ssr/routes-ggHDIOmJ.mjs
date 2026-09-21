@@ -3,10 +3,10 @@ import { t as BOOKS } from "./catalog-BxauapDR.mjs";
 import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
 import { _ as Link, v as useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as require_jsx_runtime } from "../_libs/radix-ui__react-context+react.mjs";
-import { c as Search } from "../_libs/lucide-react.mjs";
-import { c as useLibrary, l as usePrefs } from "./router-Cf9CHBPa.mjs";
-import { t as AppShell } from "./app-shell-H_ARUeZI.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-t4ORHdP7.js
+import { s as Search } from "../_libs/lucide-react.mjs";
+import { c as useLibrary, l as usePrefs } from "./router-B0RQf9yE.mjs";
+import { t as AppShell } from "./app-shell-SPNB9aj3.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-ggHDIOmJ.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function Home() {

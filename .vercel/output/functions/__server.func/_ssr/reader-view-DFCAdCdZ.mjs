@@ -1,6 +1,6 @@
 import { n as require_jsx_runtime } from "../_libs/radix-ui__react-context+react.mjs";
-import { n as cn } from "./app-shell-H_ARUeZI.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/reader-view-BnBX61lP.js
+import { n as cn } from "./app-shell-SPNB9aj3.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/reader-view-DFCAdCdZ.js
 var import_jsx_runtime = require_jsx_runtime();
 function ReaderView({ title, blocks }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {

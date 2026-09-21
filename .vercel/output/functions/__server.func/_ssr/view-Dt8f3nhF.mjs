@@ -2,11 +2,11 @@ import { i as __toESM } from "../_runtime.mjs";
 import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
 import { _ as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as require_jsx_runtime } from "../_libs/radix-ui__react-context+react.mjs";
-import { a as Star, f as ChevronLeft } from "../_libs/lucide-react.mjs";
-import { c as useLibrary, o as Route$4 } from "./router-Cf9CHBPa.mjs";
-import { n as cn, t as AppShell } from "./app-shell-H_ARUeZI.mjs";
-import { t as ReaderView } from "./reader-view-BnBX61lP.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/view-DEMeF7Gs.js
+import { a as Star, d as ChevronLeft } from "../_libs/lucide-react.mjs";
+import { c as useLibrary, o as Route$4 } from "./router-B0RQf9yE.mjs";
+import { n as cn, t as AppShell } from "./app-shell-SPNB9aj3.mjs";
+import { t as ReaderView } from "./reader-view-DFCAdCdZ.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/view-Dt8f3nhF.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function ViewPage() {

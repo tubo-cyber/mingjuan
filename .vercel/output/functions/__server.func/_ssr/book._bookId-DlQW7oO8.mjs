@@ -1,10 +1,10 @@
 import { i as KINDS, n as BOOK_BY_ID } from "./catalog-BxauapDR.mjs";
 import { _ as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as require_jsx_runtime } from "../_libs/radix-ui__react-context+react.mjs";
-import { f as ChevronLeft } from "../_libs/lucide-react.mjs";
-import { a as Route$3, l as usePrefs } from "./router-Cf9CHBPa.mjs";
-import { t as AppShell } from "./app-shell-H_ARUeZI.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/book._bookId-4cnt0bhD.js
+import { d as ChevronLeft } from "../_libs/lucide-react.mjs";
+import { a as Route$3, l as usePrefs } from "./router-B0RQf9yE.mjs";
+import { t as AppShell } from "./app-shell-SPNB9aj3.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/book._bookId-DlQW7oO8.js
 var import_jsx_runtime = require_jsx_runtime();
 function BookPage() {
 	const { bookId } = Route$3.useParams();

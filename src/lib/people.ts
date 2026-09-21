@@ -71,40 +71,6 @@ export const FIGURES: Figure[] = [
   { id: "john-rev", name: "約翰", nameS: "约翰", bookId: "66", from: 1, to: 22, role: "拔摩海島的看見者", look: "aged apostle on a rocky island" },
 ];
 
-export const ART_STYLES = [
-  {
-    id: "icon",
-    label: "聖像",
-    prompt:
-      "Byzantine Christian icon painting, gold leaf background, solemn frontal portrait, egg tempera texture, sacred but not kitsch",
-  },
-  {
-    id: "ink",
-    label: "水墨",
-    prompt:
-      "traditional Chinese ink wash painting on xuan paper, restrained brushwork, mist, scholarly atmosphere",
-  },
-  {
-    id: "oil",
-    label: "古典油畫",
-    prompt:
-      "17th-century oil painting, Rembrandt lighting, rich earth tones, museum quality portrait",
-  },
-  {
-    id: "illum",
-    label: "手抄本",
-    prompt:
-      "medieval manuscript illumination, jewel colors, gold initials, parchment texture, respectful biblical art",
-  },
-  {
-    id: "mosaic",
-    label: "馬賽克",
-    prompt: "late antique church mosaic, tesserae, gold and lapis, Ravenna style",
-  },
-] as const;
-
-export type StyleId = (typeof ART_STYLES)[number]["id"];
-
 export function figuresInRange(bookId: string, from: number, to: number): Figure[] {
   const a = Math.min(from, to);
   const b = Math.max(from, to);

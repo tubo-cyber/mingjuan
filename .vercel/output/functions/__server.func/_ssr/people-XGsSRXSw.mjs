@@ -1,4 +1,14 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/people-O5QIDr2E.js
+import { i as __toESM } from "../_runtime.mjs";
+import { n as BOOK_BY_ID, t as BOOKS } from "./catalog-BxauapDR.mjs";
+import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
+import { _ as Link } from "../_libs/@tanstack/react-router+[...].mjs";
+import { n as require_jsx_runtime } from "../_libs/radix-ui__react-context+react.mjs";
+import { n as Users } from "../_libs/lucide-react.mjs";
+import { l as usePrefs } from "./router-B0RQf9yE.mjs";
+import { t as AppShell } from "./app-shell-SPNB9aj3.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/people-XGsSRXSw.js
+var import_react = /* @__PURE__ */ __toESM(require_react());
+var import_jsx_runtime = require_jsx_runtime();
 /** 精簡名單：只列各卷主要出場人物，用於本地篩選，不佔容量。 */
 var FIGURES = [
 	{
@@ -582,37 +592,125 @@ var FIGURES = [
 		look: "aged apostle on a rocky island"
 	}
 ];
-var ART_STYLES = [
-	{
-		id: "icon",
-		label: "聖像",
-		prompt: "Byzantine Christian icon painting, gold leaf background, solemn frontal portrait, egg tempera texture, sacred but not kitsch"
-	},
-	{
-		id: "ink",
-		label: "水墨",
-		prompt: "traditional Chinese ink wash painting on xuan paper, restrained brushwork, mist, scholarly atmosphere"
-	},
-	{
-		id: "oil",
-		label: "古典油畫",
-		prompt: "17th-century oil painting, Rembrandt lighting, rich earth tones, museum quality portrait"
-	},
-	{
-		id: "illum",
-		label: "手抄本",
-		prompt: "medieval manuscript illumination, jewel colors, gold initials, parchment texture, respectful biblical art"
-	},
-	{
-		id: "mosaic",
-		label: "馬賽克",
-		prompt: "late antique church mosaic, tesserae, gold and lapis, Ravenna style"
-	}
-];
 function figuresInRange(bookId, from, to) {
 	const a = Math.min(from, to);
 	const b = Math.max(from, to);
 	return FIGURES.filter((f) => f.bookId === bookId && f.from <= b && f.to >= a);
 }
+function PeoplePage() {
+	const script = usePrefs((s) => s.script);
+	const [bookId, setBookId] = (0, import_react.useState)("01");
+	const book = BOOK_BY_ID[bookId];
+	const [from, setFrom] = (0, import_react.useState)(1);
+	const [to, setTo] = (0, import_react.useState)(Math.min(11, book.chapters));
+	const people = (0, import_react.useMemo)(() => figuresInRange(bookId, from, to), [
+		bookId,
+		from,
+		to
+	]);
+	function onBook(id) {
+		const b = BOOK_BY_ID[id];
+		setBookId(id);
+		setFrom(1);
+		setTo(Math.min(11, b.chapters));
+	}
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AppShell, {
+		title: "人物",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+				className: "mb-5",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "font-display text-xl font-semibold",
+					children: "人物"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "mt-1 text-sm text-muted",
+					children: "選書卷與章節，查看這一段經文裡的主要人物，點姓名即可去讀該章註解。"
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+				className: "mb-3 block text-xs text-muted",
+				children: ["書卷", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
+					value: bookId,
+					onChange: (e) => onBook(e.target.value),
+					className: "mt-1 h-11 w-full rounded-[length:var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg",
+					children: BOOKS.map((b) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+						value: b.id,
+						children: script === "S" ? b.nameS : b.name
+					}, b.id))
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mb-6 grid grid-cols-2 gap-2",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+					className: "text-xs text-muted",
+					children: ["從第幾章", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+						type: "number",
+						min: 1,
+						max: book.chapters,
+						value: from,
+						onChange: (e) => setFrom(clampChap(Number(e.target.value), book.chapters)),
+						className: "mt-1 h-11 w-full rounded-[length:var(--radius-md)] border border-border bg-surface px-3 text-sm"
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+					className: "text-xs text-muted",
+					children: ["到第幾章", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+						type: "number",
+						min: 1,
+						max: book.chapters,
+						value: to,
+						onChange: (e) => setTo(clampChap(Number(e.target.value), book.chapters)),
+						className: "mt-1 h-11 w-full rounded-[length:var(--radius-md)] border border-border bg-surface px-3 text-sm"
+					})]
+				})]
+			}),
+			people.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "rounded-[length:var(--radius-lg)] border border-border bg-surface px-4 py-6 text-sm text-muted",
+				children: "這段章節暫無預設人物名單，可改選其他章或直接從經卷讀經。"
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+				className: "space-y-2",
+				children: people.map((p) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
+					to: "/read/$bookId/$kind/$chap",
+					params: {
+						bookId,
+						kind: "C",
+						chap: String(p.from)
+					},
+					className: "flex min-h-14 items-center gap-3 rounded-[length:var(--radius-lg)] border border-border bg-surface px-3 py-3",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "grid size-10 shrink-0 place-items-center rounded-full bg-raised text-seal",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { className: "size-4" })
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "min-w-0 flex-1",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "block font-medium",
+								children: script === "S" ? p.nameS : p.name
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "block text-xs text-muted",
+								children: [
+									p.role,
+									" · ",
+									p.from,
+									"–",
+									p.to,
+									"章"
+								]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "text-xs text-faint",
+							children: "讀"
+						})
+					]
+				}) }, p.id))
+			})
+		]
+	});
+}
+function clampChap(n, max) {
+	if (!Number.isFinite(n)) return 1;
+	return Math.min(max, Math.max(1, Math.round(n)));
+}
 //#endregion
-export { figuresInRange as n, ART_STYLES as t };
+export { PeoplePage as component };

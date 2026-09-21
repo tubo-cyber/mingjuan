@@ -4,10 +4,10 @@ import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].
 import { f as createRouter, g as createRootRoute, h as createFileRoute, l as Scripts, m as lazyRouteComponent, p as Outlet, u as HeadContent, y as useRouter } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as require_jsx_runtime } from "../_libs/radix-ui__react-context+react.mjs";
 import { n as TSS_SERVER_FUNCTION, r as getServerFnById, t as createServerFn } from "./ssr.mjs";
-import { a as string, i as object, n as literal, o as union, r as number, t as _enum } from "../_libs/zod.mjs";
+import { a as union, i as string, n as number, r as object, t as literal } from "../_libs/zod.mjs";
 import { i as TriangleAlert } from "../_libs/lucide-react.mjs";
 import { n as create, t as persist } from "../_libs/zustand.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/server-fns-Bry1d1Co.js
+//#region node_modules/.nitro/vite/services/ssr/assets/server-fns-aUwx6qMm.js
 var createSsrRpc = (functionId) => {
 	const url = "/_serverFn/" + functionId;
 	const serverFnMeta = { id: functionId };
@@ -28,25 +28,8 @@ var getIndexFn = createServerFn({ method: "GET" }).validator(object({
 	path: string().min(1).max(400),
 	title: string().max(120).optional()
 })).handler(createSsrRpc("aac9e1e2b75223d9fc223dc01815b1c865501bc9eda3da563e4c894fd42c27b2"));
-var analyzePeopleFn = createServerFn({ method: "POST" }).validator(object({
-	bookName: string().min(1).max(40),
-	from: number().int().min(1).max(150),
-	to: number().int().min(1).max(150)
-})).handler(createSsrRpc("90c6ebd86413b18798571a087a26f47d18ff93f842663d559f97865e721f3b7e"));
-var generatePortraitFn = createServerFn({ method: "POST" }).validator(object({
-	name: string().min(1).max(40),
-	role: string().max(80),
-	look: string().max(240),
-	style: _enum([
-		"icon",
-		"ink",
-		"oil",
-		"illum",
-		"mosaic"
-	])
-})).handler(createSsrRpc("f6aa06dddaa54e533561f63f21cbe4fa797b199e17799c7633806f8a1ae9b2ce"));
 //#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/router-Cf9CHBPa.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-B0RQf9yE.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
@@ -421,7 +404,7 @@ function ThemeBoot() {
 	]);
 	return null;
 }
-var styles_default = "/assets/styles-Q5mrtHd6.css";
+var styles_default = "/assets/styles-BS6O2Nlu.css";
 var APP_NAME = "明卷查經";
 var Route$10 = createRootRoute({
 	head: () => ({
@@ -487,17 +470,17 @@ var Route$10 = createRootRoute({
 		})]
 	})
 });
-var $$splitComponentImporter$9 = () => import("./routes-t4ORHdP7.mjs");
+var $$splitComponentImporter$9 = () => import("./routes-ggHDIOmJ.mjs");
 var Route$9 = createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter$9, "component") });
-var $$splitComponentImporter$8 = () => import("./columns-DeiqfYRV.mjs");
+var $$splitComponentImporter$8 = () => import("./columns-CDo1PVcg.mjs");
 var Route$8 = createFileRoute("/columns")({ component: lazyRouteComponent($$splitComponentImporter$8, "component") });
-var $$splitComponentImporter$7 = () => import("./intro-CraBqsty.mjs");
+var $$splitComponentImporter$7 = () => import("./intro-CTivPq1T.mjs");
 var Route$7 = createFileRoute("/intro")({ component: lazyRouteComponent($$splitComponentImporter$7, "component") });
-var $$splitComponentImporter$6 = () => import("./people-C3WtobAG.mjs");
+var $$splitComponentImporter$6 = () => import("./people-XGsSRXSw.mjs");
 var Route$6 = createFileRoute("/people")({ component: lazyRouteComponent($$splitComponentImporter$6, "component") });
-var $$splitComponentImporter$5 = () => import("./topics-hW7WAewZ.mjs");
+var $$splitComponentImporter$5 = () => import("./topics-CVRSZcYt.mjs");
 var Route$5 = createFileRoute("/topics")({ component: lazyRouteComponent($$splitComponentImporter$5, "component") });
-var $$splitComponentImporter$4 = () => import("./view-DEMeF7Gs.mjs");
+var $$splitComponentImporter$4 = () => import("./view-Dt8f3nhF.mjs");
 var searchSchema = object({ path: string() });
 var Route$4 = createFileRoute("/view")({
 	validateSearch: searchSchema,
@@ -513,7 +496,7 @@ var Route$4 = createFileRoute("/view")({
 	},
 	component: lazyRouteComponent($$splitComponentImporter$4, "component")
 });
-var $$splitComponentImporter$3 = () => import("./book._bookId-4cnt0bhD.mjs");
+var $$splitComponentImporter$3 = () => import("./book._bookId-DlQW7oO8.mjs");
 var Route$3 = createFileRoute("/book/$bookId")({
 	loader: async ({ params }) => {
 		const book = BOOK_BY_ID[params.bookId];
@@ -525,7 +508,7 @@ var Route$3 = createFileRoute("/book/$bookId")({
 	},
 	component: lazyRouteComponent($$splitComponentImporter$3, "component")
 });
-var $$splitComponentImporter$2 = () => import("./column._slug-CFaQW9qt.mjs");
+var $$splitComponentImporter$2 = () => import("./column._slug-E4CxlrCe.mjs");
 var Route$2 = createFileRoute("/column/$slug")({
 	loader: async ({ params }) => {
 		const col = COLUMNS.find((c) => c.slug === params.slug);
@@ -540,7 +523,7 @@ var Route$2 = createFileRoute("/column/$slug")({
 	},
 	component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-var $$splitComponentImporter$1 = () => import("./topic._topicId-BShLvUOq.mjs");
+var $$splitComponentImporter$1 = () => import("./topic._topicId-RCsX3A52.mjs");
 var Route$1 = createFileRoute("/topic/$topicId")({
 	loader: async ({ params }) => {
 		const topic = TOPICS.find((t) => t.id === params.topicId);
@@ -555,7 +538,7 @@ var Route$1 = createFileRoute("/topic/$topicId")({
 	},
 	component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-var $$splitComponentImporter = () => import("./read._bookId._kind._chap-Js5Fyl4d.mjs");
+var $$splitComponentImporter = () => import("./read._bookId._kind._chap-BOdwb6c7.mjs");
 var Route = createFileRoute("/read/$bookId/$kind/$chap")({
 	loader: async ({ params }) => {
 		const book = BOOK_BY_ID[params.bookId];
@@ -636,4 +619,4 @@ function getRouter() {
 	});
 }
 //#endregion
-export { Route$3 as a, useLibrary as c, generatePortraitFn as d, getArticleFn as f, Route$2 as i, usePrefs as l, Route as n, Route$4 as o, Route$1 as r, FONTS as s, router_exports as t, analyzePeopleFn as u };
+export { Route$3 as a, useLibrary as c, Route$2 as i, usePrefs as l, Route as n, Route$4 as o, Route$1 as r, FONTS as s, router_exports as t, getArticleFn as u };

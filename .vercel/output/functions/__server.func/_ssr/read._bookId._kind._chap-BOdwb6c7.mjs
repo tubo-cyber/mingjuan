@@ -3,11 +3,11 @@ import { c as articlePath, i as KINDS, n as BOOK_BY_ID } from "./catalog-BxauapD
 import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
 import { _ as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as require_jsx_runtime } from "../_libs/radix-ui__react-context+react.mjs";
-import { a as Star, d as ChevronRight, f as ChevronLeft } from "../_libs/lucide-react.mjs";
-import { c as useLibrary, f as getArticleFn, l as usePrefs, n as Route } from "./router-Cf9CHBPa.mjs";
-import { n as cn, t as AppShell } from "./app-shell-H_ARUeZI.mjs";
-import { t as ReaderView } from "./reader-view-BnBX61lP.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/read._bookId._kind._chap-Js5Fyl4d.js
+import { a as Star, d as ChevronLeft, u as ChevronRight } from "../_libs/lucide-react.mjs";
+import { c as useLibrary, l as usePrefs, n as Route, u as getArticleFn } from "./router-B0RQf9yE.mjs";
+import { n as cn, t as AppShell } from "./app-shell-SPNB9aj3.mjs";
+import { t as ReaderView } from "./reader-view-DFCAdCdZ.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/read._bookId._kind._chap-BOdwb6c7.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function ReadPage() {

@@ -1,8 +1,8 @@
 import { r as COLUMNS } from "./catalog-BxauapDR.mjs";
 import { _ as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as require_jsx_runtime } from "../_libs/radix-ui__react-context+react.mjs";
-import { t as AppShell } from "./app-shell-H_ARUeZI.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/columns-DeiqfYRV.js
+import { t as AppShell } from "./app-shell-SPNB9aj3.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/columns-CDo1PVcg.js
 var import_jsx_runtime = require_jsx_runtime();
 function ColumnsPage() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AppShell, { children: [

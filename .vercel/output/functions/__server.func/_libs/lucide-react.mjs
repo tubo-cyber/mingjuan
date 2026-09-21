@@ -200,34 +200,6 @@ var Settings2 = createLucideIcon("settings-2", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var Sparkles = createLucideIcon("sparkles", [
-	["path", {
-		d: "M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z",
-		key: "4pj2yx"
-	}],
-	["path", {
-		d: "M20 3v4",
-		key: "1olli1"
-	}],
-	["path", {
-		d: "M22 5h-4",
-		key: "1gvqau"
-	}],
-	["path", {
-		d: "M4 17v2",
-		key: "vumght"
-	}],
-	["path", {
-		d: "M5 18H3",
-		key: "zchphs"
-	}]
-]);
-/**
-* @license lucide-react v0.510.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
 var Star = createLucideIcon("star", [["path", {
 	d: "M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z",
 	key: "r04s7s"
@@ -307,4 +279,4 @@ var X = createLucideIcon("x", [["path", {
 	key: "d8bk6v"
 }]]);
 //#endregion
-export { Star as a, Search as c, ChevronRight as d, ChevronLeft as f, TriangleAlert as i, Layers as l, Users as n, Sparkles as o, BookOpen as p, UserRound as r, Settings2 as s, X as t, Info as u };
+export { Star as a, Layers as c, ChevronLeft as d, BookOpen as f, TriangleAlert as i, Info as l, Users as n, Settings2 as o, UserRound as r, Search as s, X as t, ChevronRight as u };

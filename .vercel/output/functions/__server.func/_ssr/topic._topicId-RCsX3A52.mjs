@@ -1,9 +1,9 @@
 import { _ as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as require_jsx_runtime } from "../_libs/radix-ui__react-context+react.mjs";
-import { f as ChevronLeft } from "../_libs/lucide-react.mjs";
-import { r as Route$1 } from "./router-Cf9CHBPa.mjs";
-import { t as AppShell } from "./app-shell-H_ARUeZI.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/topic._topicId-BShLvUOq.js
+import { d as ChevronLeft } from "../_libs/lucide-react.mjs";
+import { r as Route$1 } from "./router-B0RQf9yE.mjs";
+import { t as AppShell } from "./app-shell-SPNB9aj3.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/topic._topicId-RCsX3A52.js
 var import_jsx_runtime = require_jsx_runtime();
 function TopicPage() {
 	const { topic, idx } = Route$1.useLoaderData();
